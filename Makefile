@@ -13,4 +13,7 @@ publish:
 package-install:
 	python3 -m pip install --user dist/*.whl
 
-.PHONY: install gendiff build publish package-install
+lint:
+	poetry run flake8 gendiff
+
+.PHONY: install gendiff build publish package-install lint
