@@ -10,4 +10,10 @@ python-project-lvl2
 
 Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. 
 
+Сравнение файлов json:
+
 [![asciicast](https://asciinema.org/a/5BAMDoyjpnkxHSLOCNaXq4ydB.svg)](https://asciinema.org/a/5BAMDoyjpnkxHSLOCNaXq4ydB)
+
+Сравнение файлов yaml:
+
+[![asciicast](https://asciinema.org/a/qmPVdbuBm1Lspi0tJlUcPSHeV.svg)](https://asciinema.org/a/qmPVdbuBm1Lspi0tJlUcPSHeV)
