@@ -3,21 +3,36 @@ from gendiff import generate_diff
 
 
 @pytest.fixture
-def file_path1():
+def file1_json_path():
     return 'tests/fixtures/file1.json'
 
 
 @pytest.fixture
-def file_path2():
+def file2_json_path():
     return 'tests/fixtures/file2.json'
 
 
 @pytest.fixture
-def result_json():
-    with open('tests/fixtures/result_json.txt', "r") as file:
+def file1_yaml_path():
+    return 'tests/fixtures/file1.yaml'
+
+
+@pytest.fixture
+def file2_yaml_path():
+    return 'tests/fixtures/file2.yaml'
+
+
+@pytest.fixture
+def diff_result():
+    with open('tests/fixtures/diff_result.txt', "r") as file:
         return file.read()
 
 
-def test_generate_diff(file_path1, file_path2, result_json):
-    result = generate_diff(file_path1, file_path2)
-    assert result == result_json
+def test_generate_diff_json(file1_json_path, file2_json_path, diff_result):
+    result = generate_diff(file1_json_path, file2_json_path)
+    assert result == diff_result
+
+
+def test_generate_diff_yaml(file1_yaml_path, file2_yaml_path, diff_result):
+    result = generate_diff(file1_yaml_path, file2_yaml_path)
+    assert result == diff_result

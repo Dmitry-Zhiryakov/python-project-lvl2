@@ -1,4 +1,5 @@
 import json
+from gendiff.parser import parse
 
 
 _add = '+ '
@@ -7,8 +8,8 @@ _ident = '  '
 
 
 def generate_diff(file_path1, file_path2):
-    file1 = json.load(open(file_path1))
-    file2 = json.load(open(file_path2))
+    file1 = parse(file_path1)
+    file2 = parse(file_path2)
     diff_list = []
     for key1, value1 in file1.items():
         value_from_file2 = file2.pop(key1, None)
