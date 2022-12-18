@@ -20,6 +20,6 @@ test:
 	poetry run pytest
 
 test-coverage:
-	poetry run pytest --cov=gendiff --cov-report xml
+	poetry run pytest --cov=gendiff --cov-report=xml
 
 .PHONY: install gendiff build publish package-install lint test test-coverage
