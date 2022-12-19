@@ -37,13 +37,11 @@ def convert_to_string(value, depth):
 
 
 def get_stylish(tree, depth=0):
-    children = tree.get('children')
-    lines = map(lambda child: iter(child, depth + 1), children)
 
-    def iter(node, depth):
+    def iter_(node, depth):
         indent = get_indent(depth)
 
-        if node['type'] == 'deleted':
+        if node['type'] == 'removed':
             return f"{indent}{SIGN_DEL} {node['key']}:" \
                    f" {convert_to_string(node['value'], depth)}"
 
@@ -52,8 +50,9 @@ def get_stylish(tree, depth=0):
                    f" {convert_to_string(node['value'], depth)}"
 
         elif node['type'] == 'nested':
-            nest_l = map(lambda n: iter(n, depth + 1), node['children'])
-            result = '\n'.join(nest_l)
+            nested_lines = map(
+                lambda child: iter_(child, depth + 1), node['children'])
+            result = '\n'.join(nested_lines)
             return f"{indent}  {node['key']}: {{\n{result}\n  {indent}}}"
 
         elif node['type'] == 'unchanged':
@@ -67,5 +66,7 @@ def get_stylish(tree, depth=0):
                      f" {convert_to_string(node['value_from_dict2'], depth)}"
             return line_1 + line_2
 
+    children = tree.get('children')
+    lines = map(lambda child: iter_(child, depth + 1), children)
     result = itertools.chain("{", lines, "}")
     return '\n'.join(result)

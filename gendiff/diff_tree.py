@@ -1,6 +1,6 @@
 def build_tree(dict_1, dict_2):
 
-    def get_nodes(dict_1, dict_2):
+    def get_nodes_(dict_1, dict_2):
         keys = sorted(dict_1.keys() | dict_2.keys())
         nodes = []
         for key in keys:
@@ -9,7 +9,7 @@ def build_tree(dict_1, dict_2):
             if key not in dict_2:
                 nodes.append({'key': key,
                               'value': dict_1[key],
-                              'type': 'deleted'
+                              'type': 'removed'
                               })
             elif key not in dict_1:
                 nodes.append({'key': key,
@@ -18,7 +18,7 @@ def build_tree(dict_1, dict_2):
                               })
             elif isinstance(node_1, dict) and isinstance(node_2, dict):
                 nodes.append({'key': key,
-                              'children': get_nodes(node_1, node_2),
+                              'children': get_nodes_(node_1, node_2),
                               'type': 'nested'
                               })
             elif node_1 == node_2:
@@ -34,4 +34,4 @@ def build_tree(dict_1, dict_2):
                               })
         return nodes
 
-    return {'type': 'root', 'children': get_nodes(dict_1, dict_2)}
+    return {'type': 'root', 'children': get_nodes_(dict_1, dict_2)}

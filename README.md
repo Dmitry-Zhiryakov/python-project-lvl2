@@ -21,3 +21,7 @@ python-project-lvl2
 Сравнение двух файлов с рекурсивной структурой (JSON или YAML)
 
 [![asciicast](https://asciinema.org/a/3BxQAMap4m38WuzraiqIjkE0P.svg)](https://asciinema.org/a/3BxQAMap4m38WuzraiqIjkE0P)
+
+Плоский вид представления результата сравнения двух файлов (JSON или YAML)
+
+[![asciicast](https://asciinema.org/a/QjqzmJbm5lKfLlql1qj3PkPRE.svg)](https://asciinema.org/a/QjqzmJbm5lKfLlql1qj3PkPRE)
