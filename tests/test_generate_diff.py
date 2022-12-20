@@ -32,7 +32,7 @@ cases = [
      'tests/fixtures/nested/file2.yaml',
      'json',
      'tests/fixtures/nested/result_json.txt'
-    )
+     )
 ]
 
 
