@@ -22,7 +22,17 @@ cases = [
      'tests/fixtures/nested/file2.yaml',
      'plain',
      'tests/fixtures/nested/result_plain.txt'
-     )
+     ),
+    ('tests/fixtures/plain/file1.json',
+     'tests/fixtures/plain/file2.yaml',
+     'json',
+     'tests/fixtures/plain/result_json.txt'
+     ),
+    ('tests/fixtures/nested/file1.json',
+     'tests/fixtures/nested/file2.yaml',
+     'json',
+     'tests/fixtures/nested/result_json.txt'
+    )
 ]
 
 
