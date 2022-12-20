@@ -5,11 +5,11 @@ def convert_to_string(value):
     if isinstance(value, dict):
         return '[complex value]'
 
-    elif isinstance(value, int):
-        return value
-
     elif isinstance(value, bool):
         return 'true' if value else 'false'
+
+    elif isinstance(value, int):
+        return value
 
     elif value is None:
         return 'null'
