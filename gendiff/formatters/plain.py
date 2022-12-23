@@ -1,4 +1,5 @@
 import itertools
+from gendiff.diff_tree import REMOVED, ADDED, NESTED, CHANGED
 
 
 def convert_to_string(value):
@@ -23,21 +24,21 @@ def get_plain(tree):
     def iter_(node, path=''):
         current_path = f"{path}{node['key']}"
 
-        if node['type'] == 'removed':
+        if node['type'] == REMOVED:
             return f"Property '{current_path}' was removed"
 
-        elif node['type'] == 'added':
+        elif node['type'] == ADDED:
             return f"Property '{current_path}' was added" \
                    f" with value: {convert_to_string(node['value'])}"
 
-        elif node['type'] == 'nested':
+        elif node['type'] == NESTED:
             nested_lines = map(
                 lambda child: iter_(
                     child, f"{current_path}."), node['children'])
             result = itertools.chain(nested_lines)
             return '\n'.join(filter(lambda item: item, result))
 
-        elif node['type'] == 'changed':
+        elif node['type'] == CHANGED:
             return f"Property '{current_path}' was updated." \
                    f" From {convert_to_string(node['value_from_dict1'])}" \
                    f" to {convert_to_string(node['value_from_dict2'])}"

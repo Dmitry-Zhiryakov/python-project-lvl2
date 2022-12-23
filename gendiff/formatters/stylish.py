@@ -1,4 +1,5 @@
 import itertools
+from gendiff.diff_tree import REMOVED, ADDED, NESTED, UNCHANGED, CHANGED
 
 
 INDENT = '  '
@@ -41,25 +42,25 @@ def get_stylish(tree, depth=0):
     def iter_(node, depth):
         indent = get_indent(depth)
 
-        if node['type'] == 'removed':
+        if node['type'] == REMOVED:
             return f"{indent}{SIGN_DEL} {node['key']}:" \
                    f" {convert_to_string(node['value'], depth)}"
 
-        elif node['type'] == 'added':
+        elif node['type'] == ADDED:
             return f"{indent}{SIGN_ADD} {node['key']}:" \
                    f" {convert_to_string(node['value'], depth)}"
 
-        elif node['type'] == 'nested':
+        elif node['type'] == NESTED:
             nested_lines = map(
                 lambda child: iter_(child, depth + 1), node['children'])
             result = '\n'.join(nested_lines)
             return f"{indent}  {node['key']}: {{\n{result}\n  {indent}}}"
 
-        elif node['type'] == 'unchanged':
+        elif node['type'] == UNCHANGED:
             return f"{indent}  {node['key']}:" \
                    f" {convert_to_string(node['value'], depth)}"
 
-        elif node['type'] == 'changed':
+        elif node['type'] == CHANGED:
             line_1 = f"{indent}{SIGN_DEL} {node['key']}:" \
                      f" {convert_to_string(node['value_from_dict1'], depth)}\n"
             line_2 = f"{indent}{SIGN_ADD} {node['key']}:" \
