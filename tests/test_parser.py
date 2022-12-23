@@ -1,15 +1,17 @@
 import pytest
-from gendiff.parser import parse
+from gendiff.parser import read_file, parse
 
 
 @pytest.fixture
-def file_path_json():
-    return 'tests/fixtures/nested/file1.json'
+def file_data_json():
+    file_data_json, _ = read_file('tests/fixtures/nested/file1.json')
+    return file_data_json
 
 
 @pytest.fixture
-def file_path_yaml():
-    return 'tests/fixtures/nested/file1.yaml'
+def file_data_yaml():
+    file_data_yaml, _ = read_file('tests/fixtures/nested/file1.yaml')
+    return file_data_yaml
 
 
 @pytest.fixture
@@ -43,6 +45,7 @@ def result_dict():
     return nested_file1_dict
 
 
-def test_parse(file_path_json, file_path_yaml, result_dict):
-    assert parse(file_path_json) == result_dict
-    assert parse(file_path_json) == parse(file_path_yaml)
+def test_parse(file_data_json, file_data_yaml, result_dict):
+    assert parse(file_data_json, '.json') == result_dict
+    assert parse(file_data_json, '.json') == parse(file_data_yaml, '.yaml')
+    assert parse(file_data_json, '.json') == parse(file_data_yaml, '.yml')
