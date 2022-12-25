@@ -15,3 +15,5 @@ def get_formatter(tree, format):
         return get_plain(tree)
     elif format == JSON:
         return get_json(tree)
+    else:
+        raise Exception('Incorrect format')

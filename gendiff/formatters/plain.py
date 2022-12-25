@@ -32,9 +32,11 @@ def get_plain(tree):
                    f" with value: {convert_to_string(node['value'])}"
 
         elif node['type'] == NESTED:
+            node_children = sorted(
+                node['children'], key=lambda item: item['key'])
             nested_lines = map(
                 lambda child: iter_(
-                    child, f"{current_path}."), node['children'])
+                    child, f"{current_path}."), node_children)
             result = itertools.chain(nested_lines)
             return '\n'.join(filter(lambda item: item, result))
 
@@ -43,7 +45,8 @@ def get_plain(tree):
                    f" From {convert_to_string(node['value_from_dict1'])}" \
                    f" to {convert_to_string(node['value_from_dict2'])}"
 
-    children = tree.get('children')
+    children = children = sorted(
+        tree.get('children'), key=lambda item: item['key'])
     lines = map(lambda child: iter_(child), children)
     result = itertools.chain(lines)
     return '\n'.join(filter(lambda item: item, result))

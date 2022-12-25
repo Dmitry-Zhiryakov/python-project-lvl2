@@ -51,8 +51,10 @@ def get_stylish(tree, depth=0):
                    f" {convert_to_string(node['value'], depth)}"
 
         elif node['type'] == NESTED:
+            node_children = sorted(
+                node['children'], key=lambda item: item['key'])
             nested_lines = map(
-                lambda child: iter_(child, depth + 1), node['children'])
+                lambda child: iter_(child, depth + 1), node_children)
             result = '\n'.join(nested_lines)
             return f"{indent}  {node['key']}: {{\n{result}\n  {indent}}}"
 
@@ -67,7 +69,7 @@ def get_stylish(tree, depth=0):
                      f" {convert_to_string(node['value_from_dict2'], depth)}"
             return line_1 + line_2
 
-    children = tree.get('children')
+    children = sorted(tree.get('children'), key=lambda item: item['key'])
     lines = map(lambda child: iter_(child, depth + 1), children)
     result = itertools.chain("{", lines, "}")
     return '\n'.join(result)

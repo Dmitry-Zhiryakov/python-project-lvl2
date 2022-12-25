@@ -8,7 +8,7 @@ CHANGED = 'changed'
 def build_tree(dict_1, dict_2):
 
     def get_nodes_(dict_1, dict_2):
-        keys = sorted(dict_1.keys() | dict_2.keys())
+        keys = dict_1.keys() | dict_2.keys()
         nodes = []
         for key in keys:
             node_1 = dict_1.get(key)
