@@ -10,8 +10,8 @@ def read_file(file_path):
     return file_data, file_extension
 
 
-def parse(file_data, file_extension='.json'):
+def parse(data, file_extension='.json'):
     if file_extension == '.json':
-        return json.loads(file_data)
+        return json.loads(data)
     if file_extension == '.yml' or '.yaml':
-        return yaml.load(file_data, Loader=yaml.FullLoader)
+        return yaml.load(data, Loader=yaml.FullLoader)
