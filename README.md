@@ -1,39 +1,57 @@
-python-project-lvl2
-
+### python-project-lvl2
 ### Hexlet tests and linter status:
 [![Actions Status](https://github.com/Dmitry-Zhiryakov/python-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/Dmitry-Zhiryakov/python-project-lvl2/actions)
 [![Github Actions](https://github.com/Dmitry-Zhiryakov/python-project-lvl2/actions/workflows/github-actions.yml/badge.svg)](https://github.com/Dmitry-Zhiryakov/python-project-lvl2/actions/workflows/github-actions.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/37bac00e4bb34750ead6/maintainability)](https://codeclimate.com/github/Dmitry-Zhiryakov/python-project-lvl2/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/37bac00e4bb34750ead6/test_coverage)](https://codeclimate.com/github/Dmitry-Zhiryakov/python-project-lvl2/test_coverage)
 
-# Вычислитель отличий
+# Gendiff
 
-### Вычислитель отличий – программа, определяющая разницу между двумя структурами данных. 
+"Gendiff" is a CLI utility that generates the difference between two files. 
 
-Вывод справки
-```gendiff -h```
+#### Utility features:
+- Support for different input formats: `.json`, `.yaml`.
+- Three report formats: `stylish`, `plain`, and `json`.
 
-Результат сравнения файлов может выводиться в трех разных форматах: default='stylish', plain, json.
-Отсутствие плюса или минуса говорит о том, что ключ есть в обоих файлах, и его значения совпадают. Во всех остальных ситуациях значение по ключу либо отличается, либо ключ есть только в одном файле.
 
-### Пример работы пакета
+## Installation:
 
-Сравнение двух плоских файлов (JSON):
+Using pip [(Demonstration)](https://asciinema.org/a/3IhP87MV4a3oCpiviDCCjxFXb):
 
-[![asciicast](https://asciinema.org/a/XxKCwZ5nCS3VFBJETrpYGNmZT.svg)](https://asciinema.org/a/XxKCwZ5nCS3VFBJETrpYGNmZT)
+```
+pip3 install --user git+https://github.com/Dmitry-Zhiryakov/python-project-lvl2.git
+```
 
-Сравнение двух плоских файлов (YAML):
+## Usage:
 
-[![asciicast](https://asciinema.org/a/v6eSprvv4JJwHJVGzoVSdtP2M.svg)](https://asciinema.org/a/v6eSprvv4JJwHJVGzoVSdtP2M)
+```
+gendiff [-h] [-f FORMAT] first_file second_file
+```
 
-Сравнение двух файлов с рекурсивной структурой (JSON или YAML)
+Positional arguments:
+`first_file`
+`second_file`
 
-[![asciicast](https://asciinema.org/a/3BxQAMap4m38WuzraiqIjkE0P.svg)](https://asciinema.org/a/3BxQAMap4m38WuzraiqIjkE0P)
+Options:
 
-Плоский вид представления результата сравнения двух файлов (JSON или YAML)
+`-h`, `--help` show this help message and exit.
 
-[![asciicast](https://asciinema.org/a/QjqzmJbm5lKfLlql1qj3PkPRE.svg)](https://asciinema.org/a/QjqzmJbm5lKfLlql1qj3PkPRE)
+`-f`, `--format` set format of output.
 
-Вывод результата сравнения двух файлов в формате JSON 
+The absence of a plus or minus indicates that the key is in both files, and its values are the same. In all other situations, the key value is either different, or the key is only in one file.
 
-[![asciicast](https://asciinema.org/a/xLxZMZLOYY9ajOtn7MV9HTeFs.svg)](https://asciinema.org/a/xLxZMZLOYY9ajOtn7MV9HTeFs)
+## Examples of using:
+Comparing files (result output in `stylish` format by default):
+- JSON
+  - [Plain](https://asciinema.org/a/vtJwPQ0DKFB4spgwc2SC6tEZA)
+  - [Nested](https://asciinema.org/a/lSK0viexNIB05nL3zbGKFgcQJ)
+- YAML
+  - [Plain](https://asciinema.org/a/xAwIhgaKbj97LMfLXydU7a1Lm)
+  - [Nested](https://asciinema.org/a/j1n2FpFmm9QCFeARdtKMu91CX)
+- JSON / YAML
+  - [Plain](https://asciinema.org/a/LZFvz8BCsh2TPJNwN46FyR2uF)
+  - [Nested](https://asciinema.org/a/SaWbKCl9piU6qcTe1Q8YYtDWF)
+
+Result output: 
+- [-f plain](https://asciinema.org/a/wyRVn4TYXMwBc4a76yf6EqxRm)
+- [-f json](https://asciinema.org/a/uLsYJUiJqULbiwBHh7rlYL42x)
